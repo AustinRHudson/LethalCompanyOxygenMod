@@ -1,13 +1,14 @@
 ﻿using BepInEx;
 using HarmonyLib;
+using LethalCompanyTemplate.Patches;
 
 namespace LethalCompanyTemplate
 {
     [BepInPlugin(modGUID, modName, modVersion)]
     public class LethalCompanyTemplate : BaseUnityPlugin
     {
-        private const string modGUID = "TestModTThatIsRightMyGuy";
-        private const string modName = "Lethal Company Test Mod";
+        private const string modGUID = "UnlimitedOxygenMod.Guyonetwo";
+        private const string modName = "Lethal Company Unlimited Oxygen Mod";
         private const string modVersion = "1.0.0";
 
         private readonly Harmony harmony = new Harmony(modGUID);
@@ -22,6 +23,7 @@ namespace LethalCompanyTemplate
             Logger.LogInfo($"Plugin {modGUID} is loaded!");
 
             harmony.PatchAll(typeof(LethalCompanyTemplate));
+            harmony.PatchAll(typeof(StartOfRoundOxygenPatch));
         }
     }
 }
